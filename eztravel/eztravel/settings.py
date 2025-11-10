@@ -25,7 +25,17 @@ SECRET_KEY = 'django-insecure-l5&won2-f7u)_=gv5^8k7m+q1up7*lsrjrk11gczys5*e^5tv6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1'
+]
+
+import os
+from dotenv import load_dotenv
+
+load_dotenv()  # reads from .env file
+AMADEUS_CLIENT_ID = os.getenv("AMADEUS_CLIENT_ID")
+AMADEUS_CLIENT_SECRET = os.getenv("AMADEUS_CLIENT_SECRET")
 
 
 # Application definition
@@ -37,6 +47,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'core',
+    'flights'
 ]
 
 MIDDLEWARE = [
